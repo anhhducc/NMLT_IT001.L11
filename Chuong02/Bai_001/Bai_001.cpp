@@ -1,0 +1,26 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+void Nhap(float&, float&, float&, float&);
+float KhoangCach(float, float, float, float);
+
+int main()
+{
+	float x1, y1, x2, y2;
+	Nhap(x1, y1, x2, y2);
+	float kc = KhoangCach(x1, y1, x2, y2);
+	cout << "Khoang cach= " << kc;
+	return 0;
+}
+
+void Nhap(float& x1, float& y1, float& x2, float& y2)
+{
+	cout << "Nhap x1, y1: ";
+	cin >> x1 >> y1;
+	cout << "Nhap x2, y2: ";
+	cin >> x2 >> y2;
+}
+float KhoangCach(float x1, float y1, float x2, float y2)
+{
+	return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+}
