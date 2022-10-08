@@ -1,0 +1,65 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+using namespace std;
+void Nhap(int[], int&);
+void Xuat(int[], int);
+int ucln(int, int);
+int bcnn(int, int);
+int TimBCNN(int[], int);
+
+int main()
+{
+	int b[100];
+	int k;
+	Nhap(b, k);
+	cout << "\nMang ban dau: " << endl;
+	Xuat(b, k);
+	cout << "\nBCNN cua tat ca phan tu: " << TimBCNN(b, k);
+	return 1;
+}
+
+void Nhap(int a[], int& n)
+{
+	cout << "Nhap n: ";
+	cin >> n;
+	srand(std::time(nullptr));
+	for (int i = 0; i < n; i++)
+		a[i] = rand() % (200 + 1);
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << setw(6) << a[i];
+	}
+}
+
+int ucln(int a, int b)
+{
+	a = abs(a);
+	b = abs(b);
+	while (a * b != 0)
+	{
+		if (a > b)
+			a = a - b;
+		else
+			b = b - a;
+	}
+	return (a + b);
+}
+
+int bcnn(int a, int b)
+{
+	return abs(a * b) / ucln(a, b);
+}
+
+int TimBCNN(int a[], int n)
+{
+	if (n == 1)
+		return a[0];
+	int lc = TimBCNN(a, n - 1);
+	lc = bcnn(lc, a[n - 1]);
+	return lc;
+}
